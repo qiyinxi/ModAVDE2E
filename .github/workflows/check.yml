@@ -50,5 +50,8 @@ jobs:
       - name: Check that pointing a test root at the SDK under test is undone byte for byte
         shell: pwsh
         run: ./tests/root-sdk.ps1
+      - name: Check the fetch item with and without the old batch file, and that it keeps LOCALAPPDATA private
+        shell: pwsh
+        run: ./tests/fetch-item.ps1
       - name: Scan tracked files for private identity and paths
         run: python3 .modavd/scripts/privacy.py .

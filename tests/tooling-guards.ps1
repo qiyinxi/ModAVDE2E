@@ -151,7 +151,7 @@ try {
 
     # ---- 8. 两条语句并成一行（11-06 审查：created-disk-usage 的 `Save-State    Run-Modavd @(...)` 让 create 根本没跑——
     # PowerShell 把后一条当成前一个函数的参数）。脚本里自己的函数后面跟着另一个函数名当裸参数、或 `}$x = …`，就算并行了
-    $shared = foreach ($lib in 'items\common.ps1', 'items\port-guard.ps1', 'items\disk-usage-lib.ps1', 'local.ps1') {
+    $shared = foreach ($lib in 'items\common.ps1', 'items\port-guard.ps1', 'items\disk-usage-lib.ps1', 'items\fetch-lib.ps1', 'local.ps1') {
         $libAst = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $repo $lib), [ref]$null, [ref]$null)
         $libAst.FindAll({ param($n) $n -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true) | ForEach-Object { $_.Name }
     }
